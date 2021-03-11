@@ -11,15 +11,14 @@ export interface ITodoState {
   editing: string | null;
 };
 
-export type ITodoActions =
+export type ITodoAction =
   | { type: 'ADD'; payload: ITodo; }
   | { type: 'TOGGLE'; payload: string; }
-  | { type: 'EDIT'; payload: ITodo; }
-  | { type: 'UPDATE'; payload: ITodo; }
+  | { type: 'UPDATE'; payload: {id: string; text: string;}; }
   | { type: 'DELETE'; payload: string; }
 ;
 
 export interface ITodotModel {
   state: ITodoState;
-  dispatch: React.Dispatch<ITodoActions>;
+  dispatch: React.Dispatch<ITodoAction>;
 }

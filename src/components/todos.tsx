@@ -1,25 +1,32 @@
+import { deleteTodoAct, toggleTodoAct, updateTodoAct } from 'actions/TodoActions';
 import React, { useContext } from 'react'
 import { TodosContext } from "../context/TodosProvider";
 import TodoItem from "./todoItem";
 
 export default function Todos() {
-  const { state } = useContext(TodosContext)
+  const { state, dispatch } = useContext(TodosContext);
 
+  const toggleTodo = (id: string) => dispatch(toggleTodoAct(id));
+  const deleteTodo = (id: string) => dispatch(deleteTodoAct(id));
+  const editTodo = (id: string, text: string) => {
+    if (!id || !text) {
+      return;
+    }
 
-  const toggleTodo = (id) => console.log('toggle', id);
-
+    dispatch(updateTodoAct({text, id}));
+  };
 
   return state.todos.length > 0 ? (
     <ul className="todo-list">
       {state.todos.map(({id, text, value}) => (
         <TodoItem
+          key={id}
           id={id}
-          editing={state.editing === id}
           text={text}
           checked={value}
           onCheck={toggleTodo}
-          onDelete={(id) => console.log('delete', id)}
-          onEdit={(id) => console.log('edit', id)}
+          onDelete={deleteTodo}
+          onEdit={editTodo}
         />
       ))}
     </ul>
