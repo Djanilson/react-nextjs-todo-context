@@ -25,7 +25,13 @@ export default function Header() {
   return (
     <header className="todo-header">
       <input type="checkbox" name="check-all" />
-      <input ref={inputText} placeholder="what need to be done?" type="text" name="todo" />
+      <input
+        ref={inputText}
+        placeholder="what need to be done?"
+        type="text"
+        name="todo"
+        onKeyDown={(e) => (e.key === 'Enter' ? addTodo() : null)}
+        />
       <button className="button" onClick={addTodo}>add</button>
     </header>
   )

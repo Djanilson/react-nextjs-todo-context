@@ -13,7 +13,6 @@ export default function Home() {
         <hr />
         <Header />
         <Todos />
-        <hr />
         <Footer />
       </div>
     </TodosProvider>

@@ -53,6 +53,8 @@
         padding: 0.9rem 1rem;
         display: flex;
         align-items: center;
+        line-height: 100%;
+        font-weight: normal;
       }
     }
   }
@@ -60,23 +62,22 @@
   .todo-footer {
     display: grid;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 25% 1fr 1fr;
+    grid-template-rows: 1fr;
     gap: 0px 0px;
     grid-column-gap: 0.5rem;
-    grid-template-areas:
-      ".  .  ."
-      "cl cl cl";
 
+    border-top: 1px solid #efefef;
     padding: 0;
     margin: 0;
 
     button {
       width: 100%;
       padding: 1px;
+      color: grey;
 
-      &:last-child {
-        grid-area: cl;
+      &:hover {
+        color: #333;
       }
     }
   }

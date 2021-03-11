@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { ITodo } from 'types/todo.type'
 
 interface TodoItemProps {
@@ -19,11 +19,35 @@ export default function TodoItem({
   onEdit,
 }: TodoItemProps) {
   const [editing, setEditing] = useState(false);
+  const inputEdit = useRef(null);
 
   const editTodo = (e, id) => {
     onEdit(id, e.target.value);
     setEditing(!editing);
   }
+
+  useEffect(() => {
+    if (editing) {
+      inputEdit.current.select();
+    }
+  }, [editing])
+
+
+  if (editing) {
+    return (
+      <li key={id}>
+        <input
+          onBlur={(e) => editTodo(e, id)}
+          onKeyDown={(e) => (e.key === 'Enter' ? editTodo(e, id) : null)}
+          type="text"
+          defaultValue={text}
+          ref={inputEdit}
+          autoFocus={true}
+        />
+      </li>
+    )
+  }
+
   return (
     <li
       key={id}
