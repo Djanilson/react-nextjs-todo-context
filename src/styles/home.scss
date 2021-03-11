@@ -1,4 +1,12 @@
 .container {
+  max-width: 60rem;
+  margin-top: 5rem;
+
+  .app-title {
+    width: 100%;
+    text-align: center;
+  }
+
   .todo-header {
     margin-top: 5rem;
     display: flex;
@@ -8,7 +16,16 @@
     }
   }
 
+
+  .empty-todos {
+    width: 100%;
+    text-align: center;
+    padding: 5rem 2rem;
+    opacity: 0.5;
+  }
+
   .todo-list {
+
     li {
       display: flex;
       align-items: center;
@@ -36,13 +53,25 @@
 
   .todo-footer {
     display: grid;
-    grid-template-columns: 25% 1fr 1fr;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 0px 0px;
     grid-column-gap: 0.5rem;
+    grid-template-areas:
+      ".  .  ."
+      "cl cl cl";
+
     padding: 0;
     margin: 0;
+
     button {
       width: 100%;
       padding: 1px;
+
+      &:last-child {
+        grid-area: cl;
+      }
     }
   }
 }
