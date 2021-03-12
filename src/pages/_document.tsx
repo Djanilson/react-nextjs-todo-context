@@ -5,7 +5,7 @@ export default class _document extends Document {
     return (
       <Html>
         <Head>
-          <title>Create Next App</title>
+          <title>TO DO LIST</title>
           <link rel="icon" href="/favicon.ico" />
           <link
             rel="stylesheet"
